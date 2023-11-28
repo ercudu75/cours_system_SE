@@ -1,0 +1,17 @@
+#!/bin/bash
+echo "Enter a number"
+read valeur
+
+if (( valeur >= 1 && valeur <= 126 )); then
+    echo "Class A"
+elif (( valeur >= 128 && valeur <= 191 )); then
+    echo "Class B"
+elif (( valeur >= 192 && valeur <= 223 )); then
+    echo "Class C"
+elif (( valeur >= 224 && valeur <= 239 )); then
+    echo "Class D"
+elif (( valeur >= 240 && valeur <= 255 )); then
+    echo "Class E"
+else
+    echo "Error"
+fi

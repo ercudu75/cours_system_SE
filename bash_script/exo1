@@ -1,0 +1,9 @@
+#!/usr/bin/bash
+while read line;
+do
+    b=$(echo "$line" | cut -d ' ' -f 3)
+    if [ "$b" -ge 10 ];
+    then
+        echo "$line"
+    fi
+done < FichierNote.txt
