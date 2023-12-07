@@ -1,19 +1,22 @@
 #!/bin/bash
+
+
+check_user(){
+	while read line;
+	do
+		if grep "^$line" /etc/passwd >> /dev/null;
+		then
+			echo "le compte $line existe";
+		else
+			echo "le compte $line n'existe pas"
+		fi
+	done < "$1"
+}
 if [ -z "$1" ];
 then
 	echo "no parameter passed"
 	exit 1
 fi
-while read line;
-do
-	login=$(echo "$line" | cut -f1 -d$'\t')
-	last_name=$(echo "$line" | cut -f2 -d$'\t')
-	first_name=$(echo "$line" | cut -f3 -d$'\t')
-done < file.txt
 
-file="$1"
-if [ ! -f file ];
-then
-	echo "file does not exist"
-	exit 1
-fi
+
+check_user "$1"

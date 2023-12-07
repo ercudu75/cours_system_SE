@@ -1,0 +1,8 @@
+#!/bin/bash
+somme(){
+	echo "donner deyx valeurs"
+	read a b
+	let "s=a+b"
+}
+somme
+echo $s

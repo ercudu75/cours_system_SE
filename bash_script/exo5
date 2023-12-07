@@ -1,0 +1,29 @@
+#!/bin/bash
+
+check_user(){
+	if grep "^$line" /etc/passwd >> /dev/null;
+	then
+		echo "le compte $line existe";
+	else
+		echo "le compte $line n'existe pas"
+		exit 1
+	fi
+}
+check_uid(){
+	check_user "$s"
+	uid=$(grep "^$s:" /etc/passwd | cut -d ":" -f3)
+	echo "UID de $s: $uid"
+}
+
+echo "entrer une valeur"
+read -r a
+case "$a" in
+	1) echo "entrer le nom d'utilisateur"
+		read -r u
+		check_user "$u";;
+	2) echo "entrer le nom d'uid"
+		read -r s
+		check_uid "$s";;
+	3) exit 1;;
+	*) echo "wrong"
+esac
