@@ -1,0 +1,9 @@
+#!/bin/bash
+
+somme(){
+	((s=$1+$2))
+	echo "$s"
+}
+somme 10 20
+somme 30 40
+somme "$1" "$2"
