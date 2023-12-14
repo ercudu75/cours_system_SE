@@ -11,19 +11,25 @@ check_user(){
 }
 check_uid(){
 	check_user "$s"
-	uid=$(grep "^$s:" /etc/passwd | cut -d ":" -f3)
+	uid=$(grep "^$s" /etc/passwd | cut -d ":" -f3)
 	echo "UID de $s: $uid"
 }
 
-echo "entrer une valeur"
-read -r a
-case "$a" in
-	1) echo "entrer le nom d'utilisateur"
-		read -r u
-		check_user "$u";;
-	2) echo "entrer le nom d'uid"
-		read -r s
-		check_uid "$s";;
-	3) exit 1;;
-	*) echo "wrong"
-esac
+echo "1) entrer le nom d'utilisateur"
+echo "2) uid of the user"
+echo "3) exit"
+while True;
+do
+	echo "entrer une valeur"
+	read -r a
+	case "$a" in
+		1) echo "entrer le nom d'utilisateur"
+			read -r u
+			check_user "$u";;
+		2) echo "entrer le nom d'uid"
+			read -r s
+			check_uid "$s";;
+		3) exit 1;;
+		*) echo "wrong"
+	esac
+done
