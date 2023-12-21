@@ -2,7 +2,12 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <sys/wait.h>
-
+/**
+ * Exercice 2: Chaîne de Processus avec Plusieurs Pipes
+Objectif
+Créer une chaîne de trois processus (un parent et deux enfants) où
+chaque processus communique avec son voisin à l'aide de pipes.
+*/
 int main(void) {
     int fd1[2], fd2[2], fd3[2];
     pid_t i, j;
