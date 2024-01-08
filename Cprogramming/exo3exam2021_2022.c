@@ -2,8 +2,10 @@
 #include<stdio.h>
 #include<unistd.h>
 
-
-
+/**
+ * do the same exercice but with
+ * execl next time
+*/
 int main(int argc, char *argv[])
 {
 	int i;
