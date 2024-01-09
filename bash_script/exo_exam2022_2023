@@ -11,19 +11,22 @@ mytable[0,4]="moyen"
 i=1
 while read line;
 do
+	var=1
 	sum=0
-	rav1=$(echo "$line" | cut -d " " -f1)
-	rav2=$(echo "$line" | cut -d " " -f2)
-	rav3=$(echo "$line" | cut -d " " -f3)
-	rav4=$(echo "$line" | cut -d " " -f4)
-	mytable["$i",0]="$rav1"
-	mytable["$i",1]="$rav2"
-	mytable["$i",2]="$rav3"
-	mytable["$i",3]="$rav4"
-	sum=$((rav1 + rav2 + rav3 + rav4))
+	for ((j=0; j<=3; j++))
+	do
+		rav=$(echo "$line" | cut -d " " -f$var)
+		mytable["$i","$j"]="$rav"
+		sum=$((sum + rav))
+		if(( var == 4 ));
+		then
+			break;
+		fi
+		let "var += 1"
+	done
 	average=$((sum / 3))
 	mytable["$i",4]="$average"
-	let "i += 1"
+	((i++))
 done < fichnote2.txt
 
 for ((i=0; i<=3; i++))
