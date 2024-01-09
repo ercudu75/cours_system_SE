@@ -3,14 +3,16 @@
 declare -A mytable
 
 i=0
-
+var=1
 while read line;
 do
-	mytable["$i",0]=$(echo "$line" | cut -d ";" -f1)
-	mytable["$i",1]=$(echo "$line" | cut -d ";" -f2)
-	mytable["$i",2]=$(echo "$line" | cut -d ";" -f3)
+    for ((j=0; j<=2; j++));
+	do
+        mytable["$i","$j"]=$(echo "$line" | cut -d ";" -f$var)
+    done
 
-	let "i += 1"
+	((i++))
+    ((var++))
 done < fichier.csv
 
 for ((i=0; i<=3; i++))
