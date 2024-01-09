@@ -1,0 +1,3 @@
+Nom1 CNE1 15 10
+Nom2 CNE2 9 20
+Nom3 CNE3 10 10
