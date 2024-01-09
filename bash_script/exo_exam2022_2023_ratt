@@ -1,0 +1,23 @@
+#!/bin/bash
+
+declare -A mytable
+
+i=0
+
+while read line;
+do
+	mytable["$i",0]=$(echo "$line" | cut -d ";" -f1)
+	mytable["$i",1]=$(echo "$line" | cut -d ";" -f2)
+	mytable["$i",2]=$(echo "$line" | cut -d ";" -f3)
+
+	let "i += 1"
+done < fichier.csv
+
+for ((i=0; i<=3; i++))
+do
+    for ((j=1; j<=3; j++))
+    do
+        echo -n "${mytable["$i","$j"]} "
+    done
+    echo
+done
