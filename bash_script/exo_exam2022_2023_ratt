@@ -3,21 +3,20 @@
 declare -A mytable
 
 i=0
-var=1
 while read line;
 do
+    var=1
     for ((j=0; j<=2; j++));
 	do
         mytable["$i","$j"]=$(echo "$line" | cut -d ";" -f$var)
+        ((var++))
     done
-
 	((i++))
-    ((var++))
 done < fichier.csv
 
 for ((i=0; i<=3; i++))
 do
-    for ((j=1; j<=3; j++))
+    for ((j=0; j<=2; j++))
     do
         echo -n "${mytable["$i","$j"]} "
     done
