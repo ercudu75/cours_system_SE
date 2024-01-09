@@ -1,0 +1,41 @@
+#!/bin/bash
+
+declare -A mytable
+
+mytable[0,0]="Etudiant"
+mytable[0,1]="Note1"
+mytable[0,2]="Note2"
+mytable[0,3]="Note3"
+mytable[0,4]="moyen"
+
+
+while read line;
+do
+	for ((i=1; i<=3; i++))
+	do
+		var=1
+		sum=0
+		for ((j=0; j<=3; j++))
+		do
+			rav=$(echo "$line" | cut -d " " -f$var)
+			mytable["$i","$j"]="$rav"
+			sum=$((sum + rav))
+			if(( var == 4 ));
+			then
+				break;
+			fi
+			let "var += 1"
+		done
+		average=$((sum / 3))
+		mytable["$i",4]="$average"
+	done
+done < fichnote2.txt
+
+for ((i=0; i<=3; i++))
+do
+    for ((j=0; j<=4; j++))
+    do
+        echo -n "${mytable["$i","$j"]} "
+    done
+    echo
+done
