@@ -8,10 +8,9 @@ mytable[0,2]="Note2"
 mytable[0,3]="Note3"
 mytable[0,4]="moyen"
 
-
+i=1
 while read line;
 do
-	i=1
 	sum=0
 	rav1=$(echo "$line" | cut -d " " -f1)
 	rav2=$(echo "$line" | cut -d " " -f2)
