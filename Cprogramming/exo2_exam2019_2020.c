@@ -10,8 +10,7 @@ int plein = 100;
 
 void *fuite(void *arg)
 {
-
-	if (plein > 0 && plein <= 100)
+	while (plein > 0 && plein <= 100)
 	{
 		pthread_mutex_lock(&lock);
 		plein = plein - (rand() % 10);
@@ -25,7 +24,7 @@ void *fuite(void *arg)
 }
 void *remplissage(void *arg)
 {
-	if (plein > 0 && plein < 100)
+	while (plein > 0 && plein < 100)
 	{
 		plein = plein + (rand() % 10);
 		printf("here2");
