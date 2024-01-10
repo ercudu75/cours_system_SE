@@ -1,2 +1,22 @@
 #!/bin/bash
 
+while read -r line;
+do
+	name=$(echo "$line" | cut -d " " -f1)
+	surname=$(echo "$line" | cut -d " " -f2)
+
+	if grep "$name" /etc/passwd > /dev/null;
+	then
+		echo "compte existe"
+	else
+		useradd "$name"
+		echo "compte $name ajouté"
+	fi
+	if grep "$surname" /etc/passwd > /dev/null;
+	then
+		echo "compte existe"
+	else
+		useradd "$surname"
+		echo "compte $surname ajouté"
+	fi
+done < compte_etudiant
