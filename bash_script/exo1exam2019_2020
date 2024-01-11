@@ -9,7 +9,7 @@ f_calcul(){
 		cne=$(echo "$line" | cut -d " " -f2)
 		val1=$(echo "$line" | cut -d " " -f3)
 		val2=$(echo "$line" | cut -d " " -f4)
-		moyen=$(( (val1 + val2) / 2 ))
+		((moyen = (val1 + val2) / 2 ))
 		f_stock "$nom $cne $moyen"
 	done < fichnote.txt
 }
